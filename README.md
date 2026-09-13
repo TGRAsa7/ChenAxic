@@ -1,49 +1,86 @@
-# ChenAxic — OTG 线刷工具
+# <img src="assets/logo.jpg" width="40" align="top"/> ChenAxic — Android 线刷 / 刷机工具
 
+[![简体中文](https://img.shields.io/badge/语言-简体中文-brightgreen)](./README.md) [![English](https://img.shields.io/badge/语言-English-blue)](./README_EN.md)
 
-一款基于 **OTG 连接**的 Android 线刷工具，在**手机端即可对其他设备线刷，无需电脑**。
+基于 **Jetpack Compose + MIUIX（HyperOS 风格）** 的 Android 刷机工具，支持 **Fastboot / ADB / 9008 (EDL)** 多种模式。
 
-## ✨ 核心亮点
-- 支持 **小米 / OPPO / Realme / OnePlus** 等品牌固件刷写
-- 支持 **Fastboot / FastbootD / 9008（EDL）深度刷机** 三种模式
-- 通过 **OTG 线**连接，手机直连目标设备完成线刷
+## ⚠️ 不开源声明
 
----
-
-## 📱 刷机功能（首页）
-
-- **高通 QDL**：Qualcomm 9008 深度刷机，含 VIP 授权、OFP/OPS 解包、QFIL 线刷、刷入/提取/擦除镜像、欧真加深刷、全量包线刷、识别分区表、AB 分区切换
-- **欧真加线刷**：支持 OPPO / Realme / OnePlus 线刷（含 preloader 刷写）
-- **小米线刷**：扫描目录 *.sh 脚本并执行
-- **刷写分区**：fastboot 刷入 boot / dtbo / init_boot / recovery 等分区
-- **刷入 KernelSU**：一键修补 init_boot / boot 并刷入
-- **ADB Sideload**：支持卡刷包或 AnyKernel3
-- **设备重启**：ADB / Fastboot 重启设备
-- **识别设备**：检测 ADB / Fastboot / Recovery / 9008 设备
-
-## 🧰 工具（工具页）
-
-- **ADB 功能**：查看设备信息、安装 APK
-- **Fastboot 功能**：Fastboot 相关操作
-- **7z 解压**：压缩包解压
-- **payload.bin 解压**：OTA 包 payload.bin 解包
-- **快捷链接**：常用链接集合
-- **开发者模式**：调试选项（含文件调试诊断）
-
-## ⚙️ 系统（设置页）
-
-- **主题**：浅色 / 深色 / 跟随系统 + Monet 动态取色
-- **终端**：内置 Shell 终端
-- **关于**：应用信息、致谢、赞助
+> 本项目为**闭源软件**，禁止反编译、衍生开发或任何商业用途。
 
 ---
 
-## ⚙️ 使用要求
-- 设备需 **root / su** 权限
-- 通过 **OTG 线**连接目标设备
-- Android 11 及以上
+## 📋 项目信息
 
-## 📥 下载
-前往本仓库 **Releases** 页面下载 APK 安装包（app-release.apk）。
+| 项 | 值 |
+|---|---|
+| 包名 | `com.ChenXluk.org` |
+| UI | Jetpack Compose + **MIUIX**（HyperOS 组件库） |
+| 要求 | Android 11+（minSdk 30），**需要 root / su** |
 
-©2026 ChenAxic 保留所有权利 · All rights reserved
+---
+
+## 📸 应用截图
+
+<p>
+  <img src="assets/screenshots/home.jpg" width="32%"/>
+  <img src="assets/screenshots/tools.jpg" width="32%"/>
+  <img src="assets/screenshots/qdl_qfil.jpg" width="32%"/>
+</p>
+<p>
+  <img src="assets/screenshots/qdl_partitions.jpg" width="32%"/>
+  <img src="assets/screenshots/qdl_log.jpg" width="32%"/>
+  <img src="assets/screenshots/detect_9008.jpg" width="32%"/>
+</p>
+<p>
+  <img src="assets/screenshots/detect_fastboot.jpg" width="32%"/>
+</p>
+
+---
+
+## 🛠️ 主要功能
+
+### 刷机
+- **小米线刷**（MiFlash 式线刷）
+- **Fastboot / FastbootD 刷入**
+- **ADB Sideload** 刷入
+- **欧真加线刷（Oplus Flash）** — 常规线刷 / 纯 FastbootD 线刷（OPPO / Realme / OnePlus，经 fastboot 通道）
+- **刷入 KernelSU**
+- **高通 QDL（9008 EDL）**——详见下节
+
+### 高通 QDL 面板（9008 EDL）
+- **OnePlus VIP 授权** — melf + Digest.elf + Sign.bin 三文件授权
+- **OFP/OPS 解包** — 解包 OPPO / OnePlus / Realme 刷机包
+- **QFIL 线刷** — 按 rawprogram / patch XML 刷写
+- **分区读写** — 刷入 / 提取 / 擦除分区
+- **模拟刷写（Dry-run）** — 空跑模拟，不连接设备、不真实刷写
+- **AB 分区** — GPT 识别活跃槽位、切换槽位
+- **保护机制** — 可跳过 `persist / ocdt / secdata` 与 LUN5、跳过 userdata
+- **机型 / 处理器快捷选择** — 自动识别授权类型并填充引导文件
+
+### 设备工具
+- **ADB / Fastboot 命令面板**（含常用快捷指令）
+- **设备识别 / 设备信息**（品牌、机型、处理器等）
+- **重启至多种模式**
+- **安装 APK**
+- **7z 解压 / payload.bin 解压**
+- **内置终端**
+- **常用资源链接**（ROM / Recovery / Root 工具合集）
+
+### 个性化
+- 多语言（简体中文 / 繁體中文 / English）
+- 主题色自定义、壁纸背景、液态玻璃 / 毛玻璃效果
+
+---
+
+## 💡 说明
+
+- 刷机有风险，操作前请自行确认机型与文件匹配，**因使用本工具造成的任何损失由使用者自行承担**
+- 本工具仅供个人设备维护与学习使用，**严禁用于非法用途**
+
+---
+
+## 🌐 相关
+
+- [Jetpack Compose 官方文档](https://developer.android.com/jetpack/compose)
+- [MIUIX - HyperOS Compose 组件库](https://github.com/miuix-kotlin-multiplatform/miuix)
