@@ -1,2 +1,2 @@
-versionCode=24
-versionName=2.7.6
+versionCode=27
+versionName=2.7.13
