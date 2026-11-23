@@ -1,2 +1,3 @@
 versionCode=30
 versionName=2.7.16
+notes=修复刷机页面偶现卡死|优化底部导航栏动画|更新 aarch64 工具链
